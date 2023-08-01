@@ -56,9 +56,9 @@ public class EventManager {
 
     @SafeVarargs
     public final void addEventTriggers(Class<? extends Event> eventClazz, Class<? extends Event>... eventClazzes) {
-        this.eventHandlers.put(eventClazz, new LinkedList<>());
+        this.addEventTrigger(eventClazz);
         for (Class<? extends Event> clazz : eventClazzes) {
-            this.eventHandlers.put(clazz, new LinkedList<>());
+            this.addEventTrigger(clazz);
         }
     }
 
@@ -70,7 +70,7 @@ public class EventManager {
      *
      * @param listener This is the class that will listen to events
      */
-    public void registerEvents(Listener listener) {
+    public void registerEventListener(Listener listener) {
         Class<? extends Listener> clazz = listener.getClass();
         Method[] methods = clazz.getDeclaredMethods();
         for (Method m : methods) {
@@ -78,6 +78,21 @@ public class EventManager {
             if (m.getParameterCount() != 1) continue;
             if (!eventHandlers.containsKey(m.getParameterTypes()[0])) continue;
             eventHandlers.get(m.getParameterTypes()[0]).add(new EventCaller(listener, m));
+        }
+    }
+    /**
+     * This method is used to register classes that wish to have their
+     * methods act as event triggers. Methods that wish to be declared as
+     * event triggers must have the event class as their only parameters as well as the
+     * \@EventHandler annotation.
+     *
+     * @param listener This is the first Listener class that will listen to events
+     * @param listeners This is the list of Listeners to be registered.
+     */
+    public void registerEventListeners(Listener listener, Listener... listeners) {
+        this.registerEventListener(listener);
+        for (Listener l : listeners) {
+            this.registerEventListener(l);
         }
     }
 
