@@ -1,7 +1,9 @@
-package EventSystem;
+package me.corxl.EventSystem;
 
 public class Event {
-    protected Event() {}
+    protected Event() {
+
+    }
     private boolean isCancelled = false;
     public void setCancelled(boolean cancelled) {
         this.isCancelled = cancelled;

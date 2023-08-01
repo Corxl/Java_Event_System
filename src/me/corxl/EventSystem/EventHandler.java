@@ -1,4 +1,4 @@
-package EventSystem;
+package me.corxl.EventSystem;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

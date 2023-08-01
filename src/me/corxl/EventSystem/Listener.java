@@ -1,4 +1,4 @@
-package EventSystem;
+package me.corxl.EventSystem;
 
 public interface Listener {
 }
