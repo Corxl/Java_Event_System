@@ -1,5 +1,5 @@
 # Description
-Event system that functions similarly to Spigot's event system. This system uses reflection to allow users to subscribe classes to events.
+Event system that functions similarly to [Spigot's event system](https://www.spigotmc.org/wiki/using-the-event-api/). This system uses reflection to allow users to subscribe classes to events.
 
 ## How to implement
 ### Creating an Event
@@ -21,4 +21,4 @@ Event listeners are used to, well, listen to events. The event manager needs to 
 
 **Step 3**. Create the method(s) you would like to use to handle an event. Each event requires the @EventHandler annotation and must only include the desired Event as a parameter. Each listener class can contain an indefinite amount of event handlers. 
 
-**Examples of how to implement this have been provided in the source code.** 
+**[Examples](https://github.com/Corxl/Java_Event_System/tree/master/src/me/corxl/Example)** 
